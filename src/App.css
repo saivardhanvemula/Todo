@@ -1,0 +1,23 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.card {
+  padding: 2em;
+}
+
+.new{
+  background-color: red;
+  height: 200px;
+  width: 500px;
+}
+.todo{
+  background-color: aqua;
+}
+.todo-list{
+  background-color: white;
+  height: 400px;
+  overflow-y: scroll;
+}
