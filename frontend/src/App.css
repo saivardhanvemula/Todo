@@ -1,0 +1,95 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+.card {
+    padding: 2em;
+}
+
+.new {
+    background-color: red;
+    height: 200px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    /* padding: 0 auto; */
+}
+.details {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0px;
+    /* justify-content: space-around; */
+}
+.details * {
+    margin: auto;
+    display: flex;
+    gap: 20px;
+}
+.details label {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.3rem;
+}
+.todo {
+    background-color: aqua;
+}
+.todo h3,
+.todo p {
+    margin: 0;
+}
+.todo-list {
+    background-color: white;
+    height: 50vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 7px;
+}
+/* .todo-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+    background: #888;
+    border-radius: 10px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.todo-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+} */
+.addbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+.addbtn button {
+    margin: 0 auto;
+}
+.completed {
+    background-color: limegreen;
+}
+.notCompleted {
+    background-color: red;
+}
+.details input {
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+.details input:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
