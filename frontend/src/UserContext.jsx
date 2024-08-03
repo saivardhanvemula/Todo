@@ -2,26 +2,26 @@
 import React, { createContext, useState, useContext } from 'react';
 
 // Create the context
-const TodosContext = createContext();
+const UserContext = createContext();
 
 // Provider component
-function TodosProvider({ children }) {
-  const [todos, setTodos] = useState([]);
+function UserProvider({ children }) {
+  const [User, setUser] = useState({});
 
   return (
-    <TodosContext.Provider value={{ todos, setTodos }}>
+    <UserContext.Provider value={{ User, setUser }}>
       {children}
-    </TodosContext.Provider>
+    </UserContext.Provider>
   );
 }
 
 // Custom hook to use the Todos context
-function useTodos() {
-  const context = useContext(TodosContext);
+function useUser() {
+  const context = useContext(UserContext);
   if (!context) {
     throw new Error('useTodos must be used within a TodosProvider');
   }
   return context;
 }
 
-export { TodosProvider, useTodos };
+export { UserProvider, useUser };

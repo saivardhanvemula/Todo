@@ -64,13 +64,13 @@ app.post("/toggle", async (req, res) => {
     }
 });
 app.post("/getTodos", async (req, res) => {
-    let { UserID, Password } = req.body;
-    console.log(UserID, Password);
+    let { UserID} = req.body;
+    console.log(UserID);
     try {
         await client.connect();
         const db = client.db("Todo");
         const collection = db.collection("users");
-        const data =await collection.findOne({ UserID: UserID, Password: Password }) ;
+        const data =await collection.findOne({ UserID: UserID}) ;
         // const data=await collection.find({}).toArray()
         if(!data){
             return res.status(401).json({ Error: "Invalid credentials" });
@@ -100,6 +100,26 @@ app.post("/getTodos", async (req, res) => {
         res.status(500).json({ Error: "Server Error" });
     }
 });
+app.post("/login",async(req,res)=>{
+    let { UserID, Password } = req.body;
+    try{
+        await client.connect();
+        const db = client.db("Todo");
+        const collection = db.collection("users");
+        const data =await collection.findOne({ UserID: UserID, Password: Password }) ;
+        if(data){
+            console.log("User Found")
+            res.status(200).json({data:"User Found"})
+        }else{
+            console.log("User Not Found")
+            res.status(401).json({data:"User Not Found"})
+        }
+    }catch (error) {
+        console.log(error);
+        res.status(500).json({ Error: "Server Error" });
+    }
+
+})
 app.listen(port, () => {
     console.log("Server running on PORT 3000");
 });
