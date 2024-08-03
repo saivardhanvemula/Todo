@@ -1,10 +1,14 @@
 import { React, useState } from "react";
 import axios from "axios";
 import "./Login.css";
+import { useNavigate } from 'react-router-dom';
+import { useTodos } from './TodosContext';
 
 export const Login = () => {
     const [UserID, setUserID] = useState("");
     const [Password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const { setTodos } = useTodos(); 
     const handleLogin = async (e) => {
         e.preventDefault();
         console.log(UserID, Password);
@@ -16,6 +20,8 @@ export const Login = () => {
                 Password,
             });
             console.log(data.data);
+            setTodos(data.data);
+            navigate('/home');
         } catch (e) {
             console.log(e);
         }

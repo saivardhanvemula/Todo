@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext,createContext } from "react";
 import axios from "axios";
 import "./Home.css";
 import add from "./assets/add.svg";
+import { useTodos } from './TodosContext';
 
 function Home() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [todos, setTodos] = useState([]);
-
+    const { todos, setTodos } = useTodos();
+    console.log(todos)
     const handleAddTodo = async () => {
         if (title && description) {
             const newTodo = { title, description, completed: false };
@@ -22,14 +23,14 @@ function Home() {
             }
         }
     };
-    const getTodos = async () => {
-        const response = await axios.get("http://localhost:3000/data");
-        console.log(response.data);
-        setTodos([...todos, ...response.data]);
-    };
-    useEffect(() => {
-        getTodos();
-    }, []);
+    // const getTodos = async () => {
+    //     const response = await axios.get("http://localhost:3000/data");
+    //     console.log(response.data);
+    //     setTodos([...todos, ...response.data]);
+    // };
+    // useEffect(() => {
+    //     getTodos();
+    // }, []);
 
     const toggleCompleted = async (index, title) => {
         const updatedTodos = todos.map((todo, idx) =>
